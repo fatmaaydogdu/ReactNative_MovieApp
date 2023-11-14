@@ -8,6 +8,8 @@ import { styles, theme } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient'
 import Cast from '../components/cast';
 import MovieList from '../components/movieList';
+import Loading from '../components/loading';
+
 
 var { width, height } = Dimensions.get("window");
 
@@ -22,6 +24,7 @@ export default function MovieScreen() {
     const [isFavourite, toggleFavourite] = useState(false);
     const [cast, setCast] = useState([1,2,3,4,5]);
     const [similarMovies, setSimilarMovies] = useState([1,2,3,4,5]);
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
@@ -44,7 +47,9 @@ export default function MovieScreen() {
                     </TouchableOpacity>
                 </SafeAreaView>
 
-                <View>
+                {
+                    loading? (<Loading />) : (
+                        <View>
                     <Image source={require('../assets/images/moviePoster2.jpg')}
                         style={{ width, height: height * 0.50 }} />
 
@@ -56,6 +61,8 @@ export default function MovieScreen() {
                         className="absolute bottom-0"
                     />
                 </View>
+                    )
+                }
 
             </View>
 

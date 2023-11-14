@@ -6,6 +6,7 @@ import { Bars3CenterLeftIcon, MagnifyingGlassIcon } from 'react-native-heroicons
 import {styles} from '../theme/index';
 import TrendingMovies from '../components/trendingMovies';
 import MovieList from '../components/movieList';
+import Loading from '../components/loading';
 import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen () {
@@ -15,6 +16,7 @@ export default function HomeScreen () {
     const [trending, setTrending] = useState([1,2,3]);
     const [upcoming, setUpComing] = useState([1,2,3]);
     const [topRated, setTopRated] = useState([1,2,3]);
+    const [loading, setLoading] = useState(false);
 
     const navigation = useNavigation();
 
@@ -34,7 +36,9 @@ export default function HomeScreen () {
                 </View>
             </SafeAreaView>
 
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: 10}}>
+            {
+                loading? (<Loading />) : (
+                    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom: 10}}>
                 {/*trending movies carousel*/}
                 <TrendingMovies data={trending} />
 
@@ -45,6 +49,10 @@ export default function HomeScreen () {
                 <MovieList title="Top Rated" data={topRated} />
 
             </ScrollView>
+                )
+            }
+
+            
         </View>
     )
 }
