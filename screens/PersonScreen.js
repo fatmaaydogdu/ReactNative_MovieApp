@@ -84,11 +84,8 @@ export default function PersonScreen() {
 
         {/* movies */}
 
-        <MovieList title="Movies" hiddenSeeAll={true} data={personMovies} />
+        <MovieList title="Movies" hideSeeAll={true} data={personMovies} />
       </View>
-
-
-
     </ScrollView>
   )
 }
