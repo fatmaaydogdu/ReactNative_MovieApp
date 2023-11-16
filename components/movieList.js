@@ -9,7 +9,6 @@ var { width, height } = Dimensions.get("window");
 
 export default function MovieList({ title, data, hideSeeAll }) {
 
-    let movieName = "Five Nights at Freddy's";
     const navigation = useNavigation();
 
     return (
